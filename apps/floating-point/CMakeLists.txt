@@ -1,10 +1,15 @@
-add_executable(dsa_floating_point
+set(APP_NAME "floating_point")
+set(APP_TARGET "${PROJECT_ID}_${APP_NAME}")
+
+add_executable("${APP_TARGET}"
     "floating-point.cpp"
 )
 
-target_link_libraries(dsa_floating_point PRIVATE
-    dsa::build_options
-    dsa::cxx_version
+target_link_libraries("${APP_TARGET}" PRIVATE
+    "${PROJECT_ID}::build_options"
+    "${PROJECT_ID}::cxx_version"
 )
 
-set_target_properties(dsa_floating_point PROPERTIES OUTPUT_NAME "floating-point")
+set_target_properties("${APP_TARGET}" PROPERTIES
+    OUTPUT_NAME "floating-point"
+)

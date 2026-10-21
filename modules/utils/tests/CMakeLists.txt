@@ -1,18 +1,19 @@
-# Executable target for the unit tests
-add_executable(dsa_utils_tests
+set(TEST_TARGET "${MODULE_TARGET}_tests")
+
+add_executable("${TEST_TARGET}"
     allocator_tests.cpp
     mocking_objects_tests.cpp
 )
 
-target_link_libraries(dsa_utils_tests PRIVATE
-    dsa::utils
-    dsa::build_options
-    dsa::cxx_version
+target_link_libraries("${TEST_TARGET}" PRIVATE
+    "${MODULE_ALIAS}"
+    "${PROJECT_ID}::build_options"
+    "${PROJECT_ID}::cxx_version"
     Catch2::Catch2WithMain
 )
 
-catch_discover_tests(dsa_utils_tests
-    TEST_PREFIX "utils::"
-    PROPERTIES LABELS "utils"
-	ADD_TAGS_AS_LABELS
+catch_discover_tests("${TEST_TARGET}"
+    TEST_PREFIX "${MODULE_NAME}::"
+    PROPERTIES LABELS "${MODULE_NAME}"
+    ADD_TAGS_AS_LABELS
 )

@@ -2,6 +2,10 @@ cmake_minimum_required(VERSION 3.24)
 
 project("Data structures and algorithms" VERSION 1.1 LANGUAGES CXX)
 
+# Project ID will be used as a prefix for all
+# targets and their aliases.
+set(PROJECT_ID "dsa")
+
 # Shared build settings and general-purpose dependencies
 include(cmake/ProjectSettings.cmake)
 include(cmake/Dependencies.cmake)
